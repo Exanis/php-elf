@@ -51,6 +51,11 @@ abstract class ElfN_Ehdr
   protected $_ei_abiversion;
 
   protected $_e_type;
+  protected $_e_machine;
+  protected $_e_version;
+  protected $_e_entry;
+  protected $_e_phoff;
+  protected $_e_shoff;
 
   static public function readFile($file)
   {
@@ -94,8 +99,18 @@ abstract class ElfN_Ehdr
   public function __construct($fd)
   {
     $this->_fd = $fd;
+    $this->_parse_elf_header();
+  }
+
+  protected function _parse_elf_header()
+  {
     $this->_parse_e_ident();
     $this->_parse_e_type();
+    $this->_parse_e_machine();
+    $this->_parse_e_version();
+    $this->_parse_e_entry();
+    $this->_parse_e_phoff();
+    $this->_parse_e_shoff();
   }
 
   protected function _read($size, $format)
@@ -183,4 +198,44 @@ abstract class ElfN_Ehdr
     return $this->_e_type;
   }
   
+  protected function _parse_e_machine()
+  {
+    $this->_e_machine = $this->_reader->readUShort();
+  }
+
+  public function e_machine()
+  {
+    return $this->_e_machine;
+  }
+
+  protected function _parse_e_version()
+  {
+    $this->_e_version = $this->_reader->readUInt();
+  }
+
+  public function e_version()
+  {
+    return $this->_e_version;
+  }
+
+  abstract protected function _parse_e_entry();
+
+  public function e_entry()
+  {
+    return $this->_e_entry;
+  }
+
+  abstract protected function _parse_e_phoff();
+
+  public function e_phoff()
+  {
+    return $this->_e_phoff;
+  }
+
+  abstract protected function _parse_e_shoff();
+
+  public function e_shoff()
+  {
+    return $this->_e_shoff;
+  }
 }

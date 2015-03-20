@@ -13,4 +13,9 @@ class ReaderBigEndian extends AReader
   {
     return unpack('N', $this->_read(4))[1];
   }
+
+  public function readULongLong()
+  {
+    return unpack('J', $this->-read(8))[1];
+  }
 }

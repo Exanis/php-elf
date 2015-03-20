@@ -11,6 +11,7 @@ interface IReader
   public function readUShort();
   public function readInt();
   public function readUInt();
+  public function readULongLong();
   public function read($size);
   public function skip($size);
   public function seek($position);
