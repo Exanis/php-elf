@@ -42,6 +42,17 @@ abstract class ElfN_Ehdr
   const ET_DYN = 3;
   const ET_CORE = 4;
 
+  const EM_NONE = 0;
+  const EM_M32 = 1;
+  const EM_SPARC = 2;
+  const EM_386 = 3;
+  const EM_68K = 4;
+  const EM_88K = 5;
+  const EM_860 = 7;
+  const EM_MIPS = 8;
+  const EM_S370 = 9;
+  const EM_MIPS_RS3_LE = 10;
+
   protected $_fd;
   protected $_reader;
 

@@ -16,6 +16,6 @@ class ReaderLittleEndian extends AReader
 
   public function readULongLong()
   {
-    return unpack('P', $this->-read(8))[1];
+    return unpack('P', $this->_read(8))[1];
   }
 }

@@ -113,4 +113,18 @@ class ElfN_EhdrTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals($element->e_type(), \Elf\ElfN_Ehdr::ET_EXEC);
     return $element;
   }
+
+  /**
+   * @covers \Elf\ElfN_Ehdr::e_machine
+   * @uses \Elf\Elf32_Ehdr
+   * @uses \Elf\Readers\AReader
+   * @uses \Elf\Readers\ReaderLittleEndian
+   */
+  public function testEMachineIsValid()
+  {
+    $element = \Elf\ElfN_Ehdr::readFile(__DIR__ . '/../content/ValidBasicFile');
+
+    $this->assertEquals($element->e_machine(), \Elf\ElfN_Ehdr::EM_386);
+    return $element;
+  }
 }
