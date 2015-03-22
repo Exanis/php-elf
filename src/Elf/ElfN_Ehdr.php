@@ -67,6 +67,13 @@ abstract class ElfN_Ehdr
   protected $_e_entry;
   protected $_e_phoff;
   protected $_e_shoff;
+  protected $_e_flags;
+  protected $_e_ehsize;
+  protected $_e_phentsize;
+  protected $_e_phnum;
+  protected $_e_shentsize;
+  protected $_e_shnum;
+  protected $_e_shstrndx;
 
   static public function readFile($file)
   {
@@ -122,6 +129,8 @@ abstract class ElfN_Ehdr
     $this->_parse_e_entry();
     $this->_parse_e_phoff();
     $this->_parse_e_shoff();
+    $this->_parse_e_flags();
+    $this->_parse_e_ehsize();
   }
 
   protected function _read($size, $format)
@@ -248,5 +257,75 @@ abstract class ElfN_Ehdr
   public function e_shoff()
   {
     return $this->_e_shoff;
+  }
+
+  protected function _parse_e_flags()
+  {
+    $this->_e_flags = $this->_reader->readUInt();
+  }
+
+  public function e_flags()
+  {
+    return $this->_e_flags;
+  }
+
+  protected function _parse_e_ehsize()
+  {
+    $this->_e_ehsize = $this->_reader->readUShort();
+  }
+
+  public function e_ehsize()
+  {
+    return $this->_e_ehsize;
+  }
+
+  protected function _parse_e_phentsize()
+  {
+    $this->_e_phentsize = $this->_reader->readUShort();
+  }
+
+  public function e_phentsize()
+  {
+    return $this->_e_phentsize;
+  }
+
+  protected function _parse_e_phnum()
+  {
+    $this->_e_phnum = $this->_reader->readUShort();
+  }
+
+  public function e_phnum()
+  {
+    return $this->_e_phnum;
+  }
+
+  protected function _parse_e_shentsize()
+  {
+    $this->_e_shentsize = $this->_reader->readUShort();
+  }
+
+  public function e_shentsize()
+  {
+    return $this->_e_shentsize;
+  }
+
+  protected function _parse_e_shnum()
+  {
+    $this->_e_shnum = $this->_reader->readUShort();
+  }
+
+  public function e_shnum()
+  {
+    return $this->_e_shnum;
+  }
+
+  protected function _parse_e_shstrndx()
+  {
+    $this->_e_shstrndx = $this->_reader->readUShort();
+  }
+
+  public function e_shstrndx()
+  {
+    return $this->_e_shstrndx;
   }
 }
