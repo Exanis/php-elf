@@ -28,11 +28,16 @@ abstract class ElfN_Ehdr
   const ELFOSABI_SYSV = 0;
   const ELFOSABI_HPUX = 1;
   const ELFOSABI_NETBSD = 2;
+  const ELFOSABI_GNU = 3;
   const ELFOSABI_LINUX = 3;
   const ELFOSABI_SOLARIS = 6;
+  const ELFOSABI_AIX = 7;
   const ELFOSABI_IRIX = 8;
   const ELFOSABI_FREEBSD = 9;
   const ELFOSABI_TRU64 = 10;
+  const ELFOSABI_MODESTO = 11;
+  const ELFOSABI_OPENBSD = 12;
+  const ELFOSABI_ARM_AEABI = 64;
   const ELFOSABI_ARM = 97;
   const ELFOSABI_STANDALONE = 255;
 
@@ -41,6 +46,11 @@ abstract class ElfN_Ehdr
   const ET_EXEC = 2;
   const ET_DYN = 3;
   const ET_CORE = 4;
+  const ET_NUM = 5;
+  const ET_LOOS = 0xfe00;
+  const ET_HIOS = 0xfeff;
+  const ET_LOPROC = 0xff00;
+  const ET_HIPROC = 0xffff;
 
   const EM_NONE = 0;
   const EM_M32 = 1;
@@ -52,7 +62,72 @@ abstract class ElfN_Ehdr
   const EM_MIPS = 8;
   const EM_S370 = 9;
   const EM_MIPS_RS3_LE = 10;
-
+  const EM_PARISC = 15;
+  const EM_VPP500 = 17;
+  const EM_SPARC32PLUS = 18;
+  const EM_960 = 19;
+  const EM_PPC = 20;
+  const EM_PPC64 = 21;
+  const EM_S390 = 22;
+  const EM_V800 = 36;
+  const EM_FR20 = 37;
+  const EM_RH32 = 38;
+  const EM_RCE = 39;
+  const EM_ARM = 40;
+  const EM_FAKE_ALPHA = 41;
+  const EM_SH = 42;
+  const EM_SPARCV9 = 43;
+  const EM_TRICORE = 44;
+  const EM_ARC = 45;
+  const EM_H8_300 = 46;
+  const EM_H8_300H = 47;
+  const EM_H8S = 48;
+  const EM_H8_500 = 49;
+  const EM_IA_64 = 50;
+  const EM_MIPS_X = 51;
+  const EM_COLDFIRE = 52;
+  const EM_68HC12 = 53;
+  const EM_MMA = 54;
+  const EM_PCP = 55;
+  const EM_NCPU = 56;
+  const EM_NDR1	= 57;
+  const EM_STARCORE = 58;
+  const EM_ME16 = 59;
+  const EM_ST100 = 60;
+  const EM_TINYJ = 61;
+  const EM_X86_64 = 62;
+  const EM_PDSP = 63;
+  const EM_FX66 = 66;
+  const EM_ST9PLUS = 67;
+  const EM_ST7 = 68;
+  const EM_68HC16 = 69;
+  const EM_68HC11 = 70;
+  const EM_68HC08 = 71;
+  const EM_68HC05 = 72;
+  const EM_SVX = 73;
+  const EM_ST19 = 74;
+  const EM_VAX = 75;
+  const EM_CRIS = 76;
+  const EM_JAVELIN = 77;
+  const EM_FIREPATH = 78;
+  const EM_ZSP = 79;
+  const EM_MMIX = 80;
+  const EM_HUANY = 81;
+  const EM_PRISM = 82;
+  const EM_AVR = 83;
+  const EM_FR30 = 84;
+  const EM_D10V = 85;
+  const EM_D30V = 86;
+  const EM_V850 = 87;
+  const EM_M32R = 88;
+  const EM_MN10300 = 89;
+  const EM_MN10200 = 90;
+  const EM_PJ = 91;
+  const EM_OPENRISC = 92;
+  const EM_ARC_A5 = 93;
+  const EM_XTENSA = 94;
+  const EM_NUM = 95;
+  
   protected $_fd;
   protected $_reader;
 
@@ -328,4 +403,6 @@ abstract class ElfN_Ehdr
   {
     return $this->_e_shstrndx;
   }
+
+  abstract public function getPhdr();
 }

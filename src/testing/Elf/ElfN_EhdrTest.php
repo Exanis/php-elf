@@ -127,4 +127,20 @@ class ElfN_EhdrTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals($element->e_machine(), \Elf\ElfN_Ehdr::EM_386);
     return $element;
   }
+
+  /**
+   * @covers \Elf\ElfN_Ehdr::getPhdr
+   * @uses \Elf\Elf32_Ehdr
+   * @uses \Elf\ElfN_Phdr
+   * @uses \Elf\Elf32_Phdr
+   */
+  public function testPhdrCreation()
+  {
+    $element = \Elf\ElfN_Ehdr::readFile(__DIR__ . '/../content/ValidBasicFile');
+    
+    $phdrs = $element->getPhdr();
+
+    $this->assertEquals(count($phdrs), 1);
+    return $element;
+  }
 }

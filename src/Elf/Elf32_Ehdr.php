@@ -23,4 +23,13 @@ class Elf32_Ehdr extends ElfN_Ehdr
   {
     $this->_e_shoff = $this->_reader->readUInt();
   }
+
+  public function getPhdr()
+  {
+    $phdrs = [];
+
+    for ($i = 0; $i < $this->e_phnum(); $i++)
+      $phdrs[] = new Elf32_Phdr($this, $i, $this->_reader);
+    return $phdrs;
+  }
 }
