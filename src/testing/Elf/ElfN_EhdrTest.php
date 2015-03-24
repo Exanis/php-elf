@@ -140,7 +140,7 @@ class ElfN_EhdrTest extends \PHPUnit_Framework_TestCase
     
     $phdrs = $element->getPhdr();
 
-    $this->assertEquals(count($phdrs), 1);
+    $this->assertEquals(count($phdrs), $element->e_phnum());
     return $element;
   }
 }

@@ -206,6 +206,11 @@ abstract class ElfN_Ehdr
     $this->_parse_e_shoff();
     $this->_parse_e_flags();
     $this->_parse_e_ehsize();
+    $this->_parse_e_phentsize();
+    $this->_parse_e_phnum();
+    $this->_parse_e_shentsize();
+    $this->_parse_e_shnum();
+    $this->_parse_e_shstrndx();
   }
 
   protected function _read($size, $format)
