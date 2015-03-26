@@ -4,6 +4,33 @@ namespace Elf;
 
 abstract class ElfN_Phdr
 {
+  const PT_NULL = 0;
+  const PT_LOAD = 1;
+  const PT_DYNAMIC = 2;
+  const PT_INTERP = 3;
+  const PT_NOTE = 4;
+  const PT_SHLIB = 5;
+  const PT_PHDR = 6;
+  const PT_TLS = 7;
+  const PT_NUM = 8;
+  const PT_LOOS = 0x60000000;
+  const PT_GNU_EH_FRAME = 0x6474e550;
+  const PT_GNU_STACK = 0x6474e551;
+  const PT_GNU_RELRO = 0x6474e552;
+  const PT_LOSUNW = 0x6ffffffa;
+  const PT_SUNWBSS = 0x6ffffffa;
+  const PT_SUNWSTACK = 0x6ffffffb;
+  const PT_HISUNW = 0x6fffffff;
+  const PT_HIOS = 0x6fffffff;
+  const PT_LOPROC = 0x70000000;
+  const PT_HIPROC = 0x7fffffff;
+
+  const PF_X = 0b0;
+  const PF_W = 0b10;
+  const PF_R = 0b100;
+  const PF_MASKOS = 0x0ff00000;
+  const PF_MASKPROC = 0xf0000000;
+
   protected $_reader;
 
   protected $_p_type;
